@@ -1,0 +1,9 @@
+<html>
+ <body>
+   {% if data %}
+     <p>{{ data }}</p>
+   {% else %}
+     <p>No data to echo...</p>
+   {% endif %}
+ </body>
+</html>

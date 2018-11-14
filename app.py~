@@ -1,0 +1,87 @@
+from flask import Flask, render_template, Markup, request
+MyApp = Flask(__name__)
+import random
+
+
+@MyApp.route("/maintemplate")
+def maintemplate():
+        return redirect('bulldog')
+
+@MyApp.route("/login")
+def login():
+        return render_template("login.html")
+
+@MyApp.route("/loginpost", methods=['POST'])
+def loginpost():
+        if (str(request.form['username']) == 'admin' && str(request.form['password']) == 'password' ):
+                return render_template('echo.html',data=Markup("Success"))
+        else:
+                return render_template('echo.html',data=Markup("Fail!"))
+
+
+@MyApp.route("/bulldog")
+def bullDog():
+        return render_template("child1.html")
+
+@MyApp.route("/german")
+def germanDog():
+        return render_template("child2.html")
+
+@MyApp.route("/beagle")
+def beagleDog():
+        return render_template("child3.html")
+
+@MyApp.route("/boxer")
+def boxerDog():
+        return render_template("child4.html")
+
+@MyApp.route("/pug")
+def pugDog():
+        return render_template("child5.html")
+
+
+''' Commented out as lab8 requires it, but this code may be usefull to reference for now.
+@MyApp.route("/")
+def helloworld():
+        return "<h1>Hello World!</h1>"
+
+@MyApp.route("/lottery")
+def lottery():
+        ticket = random.randint(1,999)
+        if ticket == 777:
+                return "<h1>Winner!</h1><p>Your number is 777!</p>"
+        else:
+                return "<h1>Sorry</h1><p>Your number was " + str(ticket) + ". Try again!</p>"
+
+@MyApp.route("/random")
+def randompage():
+        number = random.randint(1,999)
+        markup = Markup("<p>It was the <strong>best</strong> of times, it was the <strong>worst</strong> of times.</p>")
+        return render_template('example.html', rand=number, data=markup)
+
+@MyApp.route("/routes/<var1>/<var2>")
+def routesFunc(var1=None,var2=None):
+        appended = str(var1)+str(var2)
+        return render_template('echo.html',data=Markup(appended))
+
+@MyApp.route("/reqType", methods=['GET','POST'])
+def requestFunc():
+        if request.method == 'GET':
+                return render_template('echo.html',data=Markup("This is a GET request!"))
+        else:
+                return render_template('echo.html',data=Markup("This is a POST request!"))
+
+@MyApp.route("/form")
+def formFunc():
+        return render_template('input.html')
+
+@MyApp.route("/submit", methods=['POST'])
+def submitFunc():
+        return render_template('echo.html',data=Markup(len(str(request.form['input']))))
+
+@MyApp.route("/getTest")
+def gettestFunc():
+        return render_template('echo.html',data=Markup(str(request.args.get('key'))))
+'''
+if __name__ == "__main__":
+        MyApp.run()

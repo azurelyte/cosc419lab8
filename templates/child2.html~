@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+{% block head %}
+Bulldog
+{% endblock %}
+{% block content %}
+This is a bull dog. <br/>
+<img src="{{ url_for('static', filename='german.jpg') }}" alt="jeff">
+{% endblock %}

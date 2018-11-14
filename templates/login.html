@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block head %}
+Login
+{% endblock %}
+{% block content %}
+ <form action="/loginpost"  method="post">
+  First name:<br>
+  <input type="text" name="username"><br>
+  Last name:<br>
+  <input type="text" name="password"><br>
+  <input type="submit" value="Submit">
+</form> 
+<p>For testing purposes, try the username 'admin' and password 'password' to preform a successful login.</p>
+{% endblock %}
